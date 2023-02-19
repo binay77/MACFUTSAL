@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block main %}
+<br />
+<div class=" container alert alert-success" role="alert">
+  <h2 style="text-align: center;">You have been successfully logged out.</h2>
+
+
+  <h3>Login again?</h3>
+  <a href="{% url 'LoginView' %}"><button class="btn btn-primary" type="submit">Login</button></a> <br />
+</div>
+{% endblock %}

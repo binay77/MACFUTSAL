@@ -1,0 +1,143 @@
+{% extends "base.html" %}
+<link rel="stylesheet" href="styles.css">
+
+{% block main %}
+  {% if user.is_authenticated %}
+  <div class="alert alert-primary" role="alert">
+    <h3><b>Welcome </b>{{ user.username }} <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+      <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+    </svg></h3>
+  </div>
+  {% else %}
+  <div class="alert alert-success" role="alert">
+    <h3>Welcome!</h3>
+  </div>
+  {% endif %}
+
+<div class="flex-container" style="display: flex;  flex-wrap: nowrap;">
+  <div class="shadowbox" style="
+                                width :55em;
+                                border: 0.5px solid #fff;
+                                box-shadow: 8px 8px 5px #07a554;
+                                padding: 48px 12px;
+                                background-image: linear-gradient(180deg, #088928, #ddd 40%, #ccc); ">
+                                <b style="color: red;">Recent Posts!</b>  <br> <br>
+    <ul>
+      {% for post in posts %}
+      <section style="background-color: lightgrey; width: 9em;
+                  border: 1px solid green;
+                  padding : 10px;">
+        <b>
+        {{post.title}}, </b> <br>
+        <b>
+        Author : </b> {{post.author}} <br>
+        <b>
+        Updates : </b> {{post.content}} <br> <br>
+        <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
+        <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
+        </section> <br>
+      {% endfor %} 
+    </ul>
+  </div>
+
+  <div class="shadowbox" style="
+          width :90em;
+          border: 0.5px solid #fff;
+          box-shadow: 8px 8px 5px #07a554;
+          padding: 48px 12px;
+          background-image: linear-gradient(180deg, #088928, #ddd 40%, #ccc); ">
+    <b style="color: red;"> Upcomming Fixtures!!</b>
+  </div>
+</div>
+<br>
+</div>
+
+   {% load static %}
+
+ <div class="container-fluid" style="height: 100px">
+  <div class="row">
+    <div class=" mx-auto">
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+          <div class="carousel-item active" style="height:800px;">
+            <img class="d-block w-100" src="static/images/indexbg1.jpg"  alt="First slide" style="height: fit-content;">
+          </div>
+          <div class="carousel-item" style="height:800px">
+            <img class="d-block w-100" src="static/images/indexbg1.jpg" alt="Second slide"  style="height: fit-content;">
+          </div>
+          <div class="carousel-item" style="height:800px">
+            <img class="d-block w-100" src="static/images/indexbg1.jpg" alt="Third slide" style="height: fit-content;">
+          </div>
+          <div class="carousel-caption" style="padding-right:30px; padding-top : 30%;">
+            <h2 class=" font-weight-bold text-primary">MACFUTSAL Home</h2>
+            <p class="text-muted-primary">The information and notice regarding new tournaments are inserted here.</p>
+            
+        
+          </div>
+        </div>
+        <div class="contact_organizer container " style="position: absolute;
+                                              z-index:10;
+                                              top:10%;
+                                              position: absolute;
+        
+        left: 38%;
+        font-size: 30px;">
+        <div class="row">
+          <div class="col">
+            <h1 class="text-white" style=" padding:10px 30px;">Contact Organizer</h1>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <ul class="list-unstyled d-flex w-100">
+              <li class="px-1"><a href="tel:061-522650" class="text-success muted px-3 rounded"  style="background-color: white;">Phone </a></li>
+              <li class="px-1"><a href="https://www.facebook.com/MAC.ITBASEDCOLLEGE" class="text-success muted px-3 rounded"  style="background-color: white;">Facebook</a></li>
+              <li class="px-1"><a href="mailto:info@macpokhara.com.np" class="text-success muted px-3 rounded"  style="background-color: white;">Email </a></li>
+            </ul>
+          </div>
+        </div>
+      
+        
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        
+      </div>
+    </div>
+  </div>
+  <footer class="row" style="background-color:#07a554;
+                  color: #fff ; 
+                  padding: 1em 0;">
+    <div style="  max-width: 960px;
+                                    margin: 0 auto;
+                                    text-align: center;">
+      <p style="margin:0;"> Copyright <b> © 2023 </b><b> <a href="https://www.facebook.com/MAC.ITBASEDCOLLEGE">  Mount Annapurna Campus.</a></b> All Rights Reserved </p>
+      <nav style="margin-top: 1em;">
+        <ul style="  display: flex;
+                    justify-content: center;
+                    list-style: none;
+                    margin: 0;
+                    padding: 0;">
+          <li style="margin : 0 1em;"><a style="color:#fff; text-decoration: none;" href="/About/">About</a></li>
+          <li style="margin : 0 1em;"><a style="color:#fff; text-decoration: none;" href="/Contact/">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</div>
+ 
+{% endblock %} 
+
+
+      

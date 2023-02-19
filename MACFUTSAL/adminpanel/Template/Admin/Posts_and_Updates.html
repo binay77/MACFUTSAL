@@ -1,0 +1,26 @@
+<div> 
+  {% extends 'base.html' %}
+
+
+
+  {% block main %} <br>
+    <form method="post">
+      {% csrf_token %}
+      {{form.as_div}}
+      <button type="submit" style="background-color:green; color:rgb(255, 255, 255)" >Post</button>
+    </form>
+    <ul>
+      {% for post in posts %}
+      <li>
+        {{post.title}}
+        {{post.author}}
+      </li>
+      <a href="{% url 'adminpanel:delete_post' post.id %}" class="btn btn-danger">Delete</a>
+      {% endfor %}
+    </ul>
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+    <script>
+      CKEDITOR.replace( 'content' );
+    </script>
+  {% endblock %}
+</div>
