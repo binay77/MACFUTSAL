@@ -1,25 +1,27 @@
 {% extends "base.html" %}
 
 {% block main %}
+  <div class="container">
     <form>
-        <h1>Football Team Registration</h1>
-      
-        <label for="team-type">Team Type:</label>
+      <h1>Team Registration</h1>
+      <br>
+      <label for="team-type" >Team Type:</label>
         <select id="team-type" name="team-type">
           <option value="5-a-side">5 A Side</option>
           <option value="6-a-side">6 A Side</option>
           <option value="7-a-side">7 A Side</option>
           <option value="11-a-side">11 A Side</option>
         </select>
-      
-        <label for="batch">Batch: {{ request.user.profile.batch }}</label>
-        <br>
-        <label for="players">Select Players:</label><br>
         
-       
-        
-        <br>
-        <input type="submit" value="Register Team">
-      </form>
+      <label for="batch">Batch: {{ request.user.profile.batch }}</label>
+      <br> <br>
+      <label for="players">Select Players:</label><br>
       
+     
+      
+      <br>
+      <input type="submit" value="Register Team">
+    </form>
+    
+  </div>
 {% endblock %}

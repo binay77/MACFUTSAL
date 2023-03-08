@@ -22,33 +22,33 @@
                                 width :55em;
                                 border: 0.5px solid #fff;
                                 
-                                padding: 48px 12px;
-                                background-image: linear-gradient(90deg, #3143410d, #dddddd00 40%, #ccc); ">
+                                padding: 4px 12px;">
                                 <h4 style="color: red;">Recent Posts!</h4>  <br> <br>
   
+    <div class="section">
       {% for post in posts %}
-    <div class="d-inline-flex">
-      <div class="card m-3" style="background: rgb(66,236,238);
-      background:linear-gradient(0deg, rgba(172, 217, 216, 0.157)  0%, rgb(211 206 248) 100%); border-radius: 1.25rem;">
-        <div class="card-body">
-          <div class="row">
-            <div class="col">
-            <center> <h5>{{post.title}}</h5></center>
-            <hr>
-            </div>  
-          </div>
-          <div class="row">
-            <div class="col pt-2">
-             <p> Author : {{post.author}} </p>
-              <p>Updates : </b> {{post.content}}</p>
-              <button class="btn btn-outline-success" onclick="window.location.href='/CR/'">Apply for CR</button> <br> <br>
-              <button class="btn btn-outline-success" onclick="window.location.href='/GM/'">Apply for GM</button> <br> <br>
+      <div class="d-inline-flex">
+        <div class="card m-3" style="background: rgb(255, 255, 255);">
+          <div class="card-body">
+            <div class="row">
+              <div class="col">
+              <center> <h5>{{post.title}}</h5></center>
+              <hr>
+              </div>  
+            </div>
+            <div class="row">
+              <div class="col pt-2">
+               <p> Author : {{post.author}} </p>
+                <p>Updates : </b> {{post.content}}</p>
+                <button class="btn btn-outline-success" onclick="window.location.href='/CR/'">Apply for CR</button> <br> <br>
+                <button class="btn btn-outline-success" onclick="window.location.href='/GM/'">Apply for GM</button> <br> <br>
+              </div>
             </div>
           </div>
         </div>
       </div>
+        {% endfor %} 
     </div>
-      {% endfor %} 
   
   </div>
 
