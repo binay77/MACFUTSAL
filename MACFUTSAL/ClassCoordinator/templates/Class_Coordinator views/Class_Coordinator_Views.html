@@ -17,7 +17,8 @@
       <br> <br>
       <label for="players">Select Players:</label><br>
       {% for profile in profiles %}
-        <label>{{ profile.user.username }}</label>
+         <input type="checkbox" id="{{ profile.user.username }}" name="players" value="{{ profile.user.username }}">
+        <label for="{{ profile.user.username }}">{{ profile.user.username }}</label>
         <br>
       {% endfor %}
      

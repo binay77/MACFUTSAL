@@ -163,7 +163,7 @@ def GM(request):
 def class_coordinator(request):
     # Get the current user's profile
     current_user_profile = request.user.profile
-    print(current_user_profile)
+
     # Get all profiles with the same batch value as the current user
     profiles = Profile.objects.filter(batch=current_user_profile.batch).exclude(user=request.user)
     
