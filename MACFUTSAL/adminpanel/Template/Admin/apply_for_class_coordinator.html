@@ -1,0 +1,56 @@
+<title>CR | Application </title>
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container"> <br>
+  <h1 style="  font-size: 2rem;
+              text-align: center;
+              margin-bottom: 2rem;">Apply for Class Coordinator</h1> <hr>
+  <form method="POST" id="application-form">
+    {% csrf_token %}
+  <p>
+    <label for="id_user_name">User Name:</label>
+    <input type="text" name="full_name" value="{{request.user.username}}"  class="form-control" placeholder="Full Name" maxlength="100" readonly required id="id_user_name">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_email">Email:</label>
+    <input type="email" name="email" value="{{request.user.email}}" class="form-control" placeholder="Email" maxlength="254" readonly required id="id_email">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_phone">Phone:</label>
+    <input type="text" name="phone" class="form-control" placeholder="Phone" maxlength="20" required id="id_phone">
+    
+    
+  </p>
+
+  
+  <p>
+    <label for="id_batch">Batch:</label>
+    <input type="text" name="batch" value="{{request.user.profile.batch}}" class="form-control" placeholder="Batch" maxlength="10" readonly required id="id_batch">
+    
+    
+      
+    
+  </p>
+    <button id="submit-button" type="submit" style="background-color: #4CAF50;
+                                color: white;
+                                padding: 0.5rem 1rem;
+                                border: none;
+                                border-radius: 0.25rem;
+                                font-size: 1.2rem;
+                                cursor: pointer;">Submit</button>
+
+  </form>
+  {% if submitted %}
+    <h4 style="color: red;">Your form is submitted wait for Admin response to your request.</h4>
+  {% endif %} 
+</div>
+{% endblock %} 

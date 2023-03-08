@@ -14,6 +14,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 #from adminpanel.models import Messag
 from login.models import Profile
+from . models import CustomUser
 
 
 def index(request):
@@ -31,6 +32,13 @@ def index(request):
 
 def About(request):
     return render(request, "Accounts/About.html")
+
+def Profile(request):
+     return render(request, "Accounts/Profile.html" )
+
+# def GM(request):
+#     return render(request, "GM/gm.html" )
+
 
 def Contact(request):
     return render(request, "Accounts/contacts.html")
@@ -51,21 +59,15 @@ def LoginView(request):
         if user is None:
             messages.success(request, 'Wrong password.')
             return redirect('LoginView')
-
         login(request, user)
         return redirect('index')
     return render(request, "login.html")
-    
-
-
-
-
 
 def register(request):
     if request.method == "POST":
         username = request.POST.get('username')
         email = request.POST.get('email')
-        # batch = request.POST.get('batch')
+        batch = request.POST.get('batch')
         password = request.POST.get('password')
         # print(username, email, password)
 
@@ -85,7 +87,7 @@ def register(request):
 
             token = str(uuid.uuid4())
             # create a profile object for that user
-            profile_object = Profile.objects.create(user = user_object, token = token)
+            profile_object = Profile.objects.create(user = user_object, token = token,  batch=batch)
             profile_object.save()
 
             send_mail_for_verification(email, token)

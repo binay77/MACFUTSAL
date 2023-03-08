@@ -32,12 +32,10 @@ def post_page(request):
     return render(request,'adminpanel/Template/admin/Posts_and_Updates.html',context)
 
 
-def UserManagement(request):
-    return render(request, 'adminpanel/Template/Admin/UserManagement.html')
-
 
 def Roles(request):
-    return render(request, 'adminpanel/Template/Admin/Roles.html')
+    applications = Application.objects.all()
+    return render(request, 'adminpanel/Template/Admin/Roles.html', {'applications': applications})
 
 
 def Notices(request):
@@ -76,3 +74,109 @@ def delete_post(request, post_id):
     except Posts.DoesNotExist:
         messages.error(request, "Post does not exist")
     return redirect('adminpanel:post_page')
+
+def delete_Application_for_CR(request, application_id):
+    try:
+        application = Application.objects.get(id=application_id)
+        application.delete()
+    except Application.DoesNotExist:
+        messages.error(request, "Application does not exist")
+    return redirect('adminpanel:Roles')
+
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import Group, User
+from .models import Application
+
+
+
+def delete_Permission_for_CR(request, application_id):
+    application = get_object_or_404(Application, id=application_id)
+    user = User.objects.get(email=application.email)
+    user.groups.clear() # Remove user from all groups
+    applications = Application.objects.filter(accepted=True)
+    application.delete()
+    return render(request, 'adminpanel/Template/Admin/UserManagement.html', {'applications': applications})
+
+
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib.auth.models import Group , User
+from .models import Application
+
+def accept_application(request, application_id):
+    application = get_object_or_404(Application, id=application_id)
+    application.accepted = True
+    application.save()
+    user = User.objects.get(email=application.email)
+    group = Group.objects.get(name='Class Coordinator')
+    user.groups.add(group)
+    applications = Application.objects.filter(accepted=True)
+    return render(request, 'adminpanel/Template/Admin/Roles.html', {'applications': applications})
+
+
+
+from django.shortcuts import render
+from django.contrib.auth.models import Group
+from .models import Application
+
+def UserManagement(request):
+    applications = Application.objects.filter(accepted=True)
+    return render(request, 'adminpanel/Template/Admin/UserManagement.html', {'applications': applications})
+
+
+
+#handling  CR application form
+from django.shortcuts import render
+from .forms import ApplyForClassCoordinator
+from . models import Application
+# from django.contrib.auth.decorators import login_required
+
+
+def CRform(request):
+    submitted = False
+    if request.method == 'POST':
+        form = ApplyForClassCoordinator(request.POST)
+        if form.is_valid():
+            form.save()
+            submitted = True
+    else:
+        form = ApplyForClassCoordinator()
+
+    applications = Application.objects.all()
+
+    context = {
+        'form': form,
+        'applications': applications,
+        'submitted': submitted
+    }
+    return render(request, 'adminpanel/Template/admin/apply_for_class_coordinator.html', context)
+
+# def CRform(request):
+    
+#     already_submitted = request.session.get('already_submitted', False)
+#     if already_submitted:
+#         return render(request, 'adminpanel/Template/admin/already_submitted.html')
+
+#     if request.method == 'POST':
+#         form = ApplyForClassCoordinator(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             request.session['already_submitted'] = True
+#             return redirect('index')
+#     else:
+#         form = ApplyForClassCoordinator()
+
+#     applications = Application.objects.all()
+
+#     context = {
+#         'form': form,
+#         'applications': applications,
+#     }
+#     return render(request, 'adminpanel/Template/admin/apply_for_class_coordinator.html', context)
+
+
+
+
+def GM(request):
+    return render(request, "GM/gm.html" )
+

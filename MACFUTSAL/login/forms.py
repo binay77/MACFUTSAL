@@ -7,8 +7,7 @@
 #     first_name = forms.CharField(max_length=101)
 #     last_name = forms.CharField(max_length=101)
 #     email = forms.EmailField()
-
+#     batch = forms.CharFiled(max_length=4)
 #     class Meta:
 #         model = User
 #         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
-        

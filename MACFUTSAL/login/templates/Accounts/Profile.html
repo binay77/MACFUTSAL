@@ -1,0 +1,54 @@
+<title>MACFUTSAL | Profile</title>
+
+{% extends 'base.html' %} {% block main %}
+
+<div class="container">
+    <br>
+    <!-- <form  method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+          <label for="id_profile_picture" style="display: block;
+                                                  margin-bottom: 5px;
+                                                  font-weight: bold;">Profile Picture:</label>
+          <input type="file" id="id_profile_picture" name="profile_picture" accept="image/*">
+        </p> -->
+    <p>
+        <label for="id_user_name" style="display: block;
+                                        margin-bottom: 5px;
+                                        font-weight: bold;">User Name:</label>
+        <input type="text" name="full_name" style=" width: 100%;
+                                                    padding: 10px;
+                                                    border: 1px solid #ccc;
+                                                    border-radius: 5px;
+                                                    box-sizing: border-box;
+                                                    margin-bottom: 20px;
+                                                    font-size: 16px;" value="{{request.user.username}}"  class="form-control" placeholder="Full Name" maxlength="100" readonly required id="id_user_name">    
+    </p>
+    <p>
+        <label for="id_email" style="display: block;
+                                    margin-bottom: 5px;
+                                    font-weight: bold;">Email:</label>
+        <input type="email" name="email" style=" width: 100%;
+                                                padding: 10px;
+                                                border: 1px solid #ccc;
+                                                border-radius: 5px;
+                                                box-sizing: border-box;
+                                                margin-bottom: 20px;
+                                                font-size: 16px;" value="{{request.user.email}}" class="form-control" placeholder="Email" maxlength="254" readonly required id="id_email">    
+    </p>
+    <p>
+        <label for="id_batch" style="display: block;
+                                    margin-bottom: 5px;
+                                    font-weight: bold;">Batch:</label>
+        <input type="text" style=" width: 100%;
+                                    padding: 10px;
+                                    border: 1px solid #ccc;
+                                    border-radius: 5px;
+                                    box-sizing: border-box;
+                                    margin-bottom: 20px;
+                                    font-size: 16px;" name="batch" value="{{request.user.profile.batch}}" class="form-control" placeholder="Batch" maxlength="10" readonly required id="id_batch">
+      </p>
+</div>
+
+{% endblock %}
+

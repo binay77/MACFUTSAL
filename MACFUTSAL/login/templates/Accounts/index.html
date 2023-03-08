@@ -14,49 +14,40 @@
   </div>
   {% endif %}
 
-<div class="flex-container" style="display: flex;  flex-wrap: nowrap;">
+
+
+
+<div class="flex-container" style="display: flex;  flex-wrap: nowrap; ">
   <div class="shadowbox" style="
                                 width :55em;
                                 border: 0.5px solid #fff;
-                                box-shadow: 8px 8px 5px #07a554;
+                                box-shadow: 8px 8px 5px #8db6a1;
                                 padding: 48px 12px;
-                                background-image: linear-gradient(180deg, #088928, #ddd 40%, #ccc); ">
-                                <b style="color: red;">Recent Posts!</b>  <br> <br>
+                                background-image: linear-gradient(90deg, #3143410d, #dddddd00 40%, #ccc); ">
+                                <h4 style="color: red;">Recent Posts!</h4>  <br> <br>
   
       {% for post in posts %}
-    <DIv class="d-inline-flex">
+    <div class="d-inline-flex">
       <div class="card m-3" style="background: rgb(66,236,238);
-      background:linear-gradient(0deg, rgb(227 213 200)  0%, rgb(211 206 248) 100%); border-radius: 1.25rem;">
+      background:linear-gradient(0deg, rgba(172, 217, 216, 0.157)  0%, rgb(211 206 248) 100%); border-radius: 1.25rem;">
         <div class="card-body">
           <div class="row">
             <div class="col">
             <center> <h5>{{post.title}}</h5></center>
             <hr>
-            </div>
+            </div>  
           </div>
           <div class="row">
             <div class="col pt-2">
              <p> Author : {{post.author}} </p>
               <p>Updates : </b> {{post.content}}</p>
-              <button class="btn btn-outline-success" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
-  <button class="btn btn-outline-info" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
-  
+              <button class="btn btn-outline-success" onclick="window.location.href='/CR/'">Apply for CR</button> <br> <br>
+              <button class="btn btn-outline-success" onclick="window.location.href='/GM/'">Apply for GM</button> <br> <br>
             </div>
           </div>
         </div>
-        
-        <!-- <section class="flex flex-right " style="background-color: lightgrey;">
-  <b>
-  {{post.title}}, </b> <br>
-  <b>
-  Author : </b> {{post.author}} <br>
-  <b>
-  Updates : </b> {{post.content}} <br> <br>
-  <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
-  <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
-  </section> <br> -->
       </div>
-    </DIv>
+    </div>
       {% endfor %} 
   
   </div>
@@ -64,10 +55,10 @@
   <div class="shadowbox" style="
           width :90em;
           border: 0.5px solid #fff;
-          box-shadow: 8px 8px 5px #07a554;
+          box-shadow: 8px 8px 5px #6ca788;
           padding: 48px 12px;
-          background-image: linear-gradient(180deg, #088928, #ddd 40%, #ccc); ">
-    <b style="color: red;"> Upcomming Fixtures!!</b>
+          background-image: linear-gradient(0deg, rgba(172, 217, 216, 0.157)  0%, rgb(211 206 248) 100%); ">
+    <h4 style="color: red;"> Upcomming Fixtures!!</h4>
   </div>
 </div>
 <br>
@@ -94,11 +85,9 @@
           <div class="carousel-item" style="height:800px">
             <img class="d-block w-100" src="static/images/indexbg1.jpg" alt="Third slide" style="height: fit-content;">
           </div>
-          <div class="carousel-caption" style="padding-right:30px; padding-top : 30%;">
+          <!-- <div class="carousel-caption" style="padding-right:30px; padding-top : 30%;">
             <h2 class=" font-weight-bold text-primary">MACFUTSAL Home</h2>
-            <p class="text-muted-primary">The information and notice regarding new tournaments are inserted here.</p>
-            
-        
+            <p class="text-muted-primary">The information and notice regarding new tournaments are inserted here.</p>  
           </div>
         </div>
         <div class="contact_organizer container " style="position: absolute;
@@ -107,13 +96,13 @@
                                               position: absolute;
         
         left: 38%;
-        font-size: 30px;">
-        <div class="row">
+        font-size: 30px;"> -->
+        <!-- <div class="row">
           <div class="col">
-            <h1 class="text-white" style=" padding:10px 30px;">Contact Organizer</h1>
+            <h1 class="text-white" style=" padding:10px 30px;">Mount Annapurna Campus</h1>
           </div>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class=" center">
           <div class="col">
             <ul class="list-unstyled d-flex w-100">
               <li class="px-1"><a href="tel:061-522650" class="text-success muted px-3 rounded"  style="background-color: white;">Phone </a></li>
@@ -121,7 +110,7 @@
               <li class="px-1"><a href="mailto:info@macpokhara.com.np" class="text-success muted px-3 rounded"  style="background-color: white;">Email </a></li>
             </ul>
           </div>
-        </div>
+        </div> -->
       
         
         </div>
@@ -137,7 +126,7 @@
       </div>
     </div>
   </div>
-  <footer class="row" style="background-color:#07a554;
+  <footer class="row" style="background-color:#042413;
                   color: #fff ; 
                   padding: 1em 0;">
     <div style="  max-width: 960px;
@@ -158,6 +147,8 @@
   </footer>
 </div>
  
+
+
 {% endblock %} 
 
 

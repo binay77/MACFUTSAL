@@ -1,4 +1,35 @@
-Roles and permission Management
-
-
-
+<title>Roles</title>
+<div> 
+    {% extends 'base.html' %}  {% block main %} 
+      
+      <h1>Applications</h1>
+      <div style="border: 1px solid black; padding: 10px; display: inline-block;">
+        <table style="border-collapse: collapse; border-spacing: 0;">
+          <thead>
+            <tr>
+              <th style="padding-right: 20px;">User Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Batch</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for application in applications %}
+            <tr>
+              <td style="border: 1px solid black; padding: 5px;">{{ application.full_name }}</td>
+              <td style="border: 1px solid black; padding: 5px;">{{ application.email }}</td>
+              <td style="border: 1px solid black; padding: 5px;">{{ application.phone }}</td>
+              <td style="border: 1px solid black; padding: 5px;">{{ application.batch }}</td>
+              <td style="border: 1px solid black; padding: 5px;">
+                <a href="{% url 'adminpanel:accept_application' application.id %}" class="btn btn-primary" >Accept</a>
+                <a href="{% url 'adminpanel:delete_Application_for_CR' application.id %}" class="btn btn-danger">Delete</a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      
+    {% endblock %}
+</div>

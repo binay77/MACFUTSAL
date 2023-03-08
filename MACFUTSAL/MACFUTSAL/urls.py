@@ -16,8 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Teams.views import Teams
-from login.views import LoginView , token_send , success , error_page, verification ,About, Contact
-
+from login.views import Profile , token_send , success , error_page, verification ,About, Contact 
+from adminpanel.views import CRform , GM
 
 
 from django.contrib.auth import views as auth_views
@@ -31,6 +31,8 @@ urlpatterns = [
     path('', include('ClassCoordinator.urls')),
     path('', include('SystemHandler.urls')),
     path('', include('adminpanel.urls')),
+    path('CR/', CRform),
+    path('GM/', GM ),
     path('About/', About ),
     path('Contact/', Contact ),
     path('Teams/', Teams ),
@@ -42,4 +44,5 @@ urlpatterns = [
     path('success/', success, name="success"),
     path('verify/<token>', verification, name="verify"),
     path('error/', error_page, name="error"),
+    path('profile/', Profile)
 ]
