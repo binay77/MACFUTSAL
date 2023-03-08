@@ -160,6 +160,18 @@ def GM(request):
 
 
 
+# def class_coordinator(request):
+#     # Get the current user's profile
+#     current_user_profile = request.user.profile
+
+#     # Get all profiles with the same batch value as the current user
+#     profiles = Profile.objects.filter(batch=current_user_profile.batch).exclude(user=request.user)
+    
+#     # Render the template with the profiles
+#     return render(request, 'Class_Coordinator.html', {'profiles': profiles})
+
+
+
 def class_coordinator(request):
     # Get the current user's profile
     current_user_profile = request.user.profile
