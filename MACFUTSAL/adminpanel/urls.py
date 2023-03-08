@@ -17,5 +17,5 @@ urlpatterns = [
     path('adminpanel/admin_view/UserManagement/', UserManagement, name='UserManagement'),
     path('adminpanel/admin_view/Roles/', Roles, name='Roles'),
     path('adminpanel/admin_view/Notices/', Notices, name='Notices'),
-
+    
 ]
