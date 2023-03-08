@@ -5,6 +5,8 @@ from django.shortcuts import redirect
 from django.contrib import messages
 from django.http import Http404
 from django.shortcuts import get_object_or_404, redirect
+from login.models import Profile
+
 
 # Create your views here.
 from django.contrib.auth.decorators import user_passes_test
@@ -151,32 +153,19 @@ def CRform(request):
     }
     return render(request, 'adminpanel/Template/admin/apply_for_class_coordinator.html', context)
 
-# def CRform(request):
-    
-#     already_submitted = request.session.get('already_submitted', False)
-#     if already_submitted:
-#         return render(request, 'adminpanel/Template/admin/already_submitted.html')
-
-#     if request.method == 'POST':
-#         form = ApplyForClassCoordinator(request.POST)
-#         if form.is_valid():
-#             form.save()
-#             request.session['already_submitted'] = True
-#             return redirect('index')
-#     else:
-#         form = ApplyForClassCoordinator()
-
-#     applications = Application.objects.all()
-
-#     context = {
-#         'form': form,
-#         'applications': applications,
-#     }
-#     return render(request, 'adminpanel/Template/admin/apply_for_class_coordinator.html', context)
-
-
 
 
 def GM(request):
     return render(request, "GM/gm.html" )
 
+
+
+def class_coordinator(request):
+    # Get the current user's profile
+    current_user_profile = request.user.profile
+    print(current_user_profile)
+    # Get all profiles with the same batch value as the current user
+    profiles = Profile.objects.filter(batch=current_user_profile.batch).exclude(user=request.user)
+    
+    # Render the template with the profiles
+    return render(request, 'Class_Coordinator.html', {'profiles': profiles})

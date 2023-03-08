@@ -16,7 +16,10 @@
       <label for="batch">Batch: {{ request.user.profile.batch }}</label>
       <br> <br>
       <label for="players">Select Players:</label><br>
-      
+      {% for profile in profiles %}
+        <label>{{ profile.user.username }}</label>
+        <br>
+      {% endfor %}
      
       
       <br>
