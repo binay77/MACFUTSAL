@@ -22,22 +22,43 @@
                                 padding: 48px 12px;
                                 background-image: linear-gradient(180deg, #088928, #ddd 40%, #ccc); ">
                                 <b style="color: red;">Recent Posts!</b>  <br> <br>
-    <ul>
+  
       {% for post in posts %}
-      <section style="background-color: lightgrey; width: 9em;
-                  border: 1px solid green;
-                  padding : 10px;">
-        <b>
-        {{post.title}}, </b> <br>
-        <b>
-        Author : </b> {{post.author}} <br>
-        <b>
-        Updates : </b> {{post.content}} <br> <br>
-        <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
-        <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
-        </section> <br>
+    <DIv class="d-inline-flex">
+      <div class="card m-3" style="background: rgb(66,236,238);
+      background:linear-gradient(0deg, rgb(227 213 200)  0%, rgb(211 206 248) 100%); border-radius: 1.25rem;">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+            <center> <h5>{{post.title}}</h5></center>
+            <hr>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col pt-2">
+             <p> Author : {{post.author}} </p>
+              <p>Updates : </b> {{post.content}}</p>
+              <button class="btn btn-outline-success" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
+  <button class="btn btn-outline-info" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
+  
+            </div>
+          </div>
+        </div>
+        
+        <!-- <section class="flex flex-right " style="background-color: lightgrey;">
+  <b>
+  {{post.title}}, </b> <br>
+  <b>
+  Author : </b> {{post.author}} <br>
+  <b>
+  Updates : </b> {{post.content}} <br> <br>
+  <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('CR')">Apply for CR</button> <br> <br>
+  <button style="background-color: #07a554; color:#ccc;" onclick="applyForRole('GameManager')">Apply for GM</button> <br> <br>
+  </section> <br> -->
+      </div>
+    </DIv>
       {% endfor %} 
-    </ul>
+  
   </div>
 
   <div class="shadowbox" style="
